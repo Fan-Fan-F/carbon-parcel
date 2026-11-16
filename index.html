@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>carbon-parcel · 包裹碳足迹计算器</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <h1>🌱 包裹碳足迹计算器 <span class="sub">多式联运排放对比 · 绿色物流决策</span></h1>
+</header>
+
+<main class="layout">
+  <section class="card form-card">
+    <h2>包裹信息</h2>
+    <div class="form-row">
+      <label>发货城市<select id="from"></select></label>
+      <span class="arrow">→</span>
+      <label>收货城市<select id="to"></select></label>
+      <label>重量（kg）<input id="weight" type="number" min="0.1" step="0.1" value="2"></label>
+    </div>
+    <button id="btn-calc" class="btn primary">计算碳足迹</button>
+  </section>
+
+  <div id="result" class="hidden">
+    <section class="card headline">
+      <div class="big-num">
+        <div class="num" id="total-kg">—</div>
+        <div class="unit">kg CO₂e / 包裹</div>
+      </div>
+      <div class="head-meta">
+        <div id="head-route"></div>
+        <div id="head-detail"></div>
+      </div>
+      <div class="equiv" id="equiv"></div>
+    </section>
+
+    <section class="card">
+      <h2>排放构成</h2>
+      <div class="breakdown" id="breakdown"></div>
+    </section>
+
+    <section class="card">
+      <h2>三种运输方案对比 <span class="hint">同样包裹，不同选择，碳排放最多相差 40 倍</span></h2>
+      <div id="compare"></div>
+      <canvas id="cv" width="760" height="240"></canvas>
+    </section>
+  </div>
+</main>
+
+<script src="carbon.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
